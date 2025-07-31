@@ -1,11 +1,33 @@
 import { useState } from "react";
 import { IoReturnUpBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 function NewNote() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [content, setContent] = useState("");
+
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!title.trim() || !description.trim() || !content.trim()) {
+            toast.error("Preencha os campos");
+            return;
+        };
+
+        const note = { title, description, content }
+
+        try {
+            axios.post("http://localhost:5000/api/notes", note);
+            toast.success("Nota criada");
+            setTitle(""); setDescription(""); setContent("");
+        } catch (error) {
+            console.error("Erro ao criar nota");
+            toast.error("Erro ao criar nota");
+        };
+    };
 
     return (
         <div className="pb-6 max-w-6xl mx-auto w-[90%] relative">
@@ -17,7 +39,7 @@ function NewNote() {
                 </span>
                 <span>Voltar</span>
             </Link>
-            <main className="glassy-panel w-[90%] max-w-xl mx-auto outline-2 outline-sky-950/10 duration-200 ease-in-out">
+            <form onSubmit={handleFormSubmit} className="glassy-panel w-[90%] max-w-xl mx-auto outline-2 outline-sky-950/10 duration-200 ease-in-out">
                 <h1 className="note-title mb-4">Nova Nota</h1>
 
                 <label className="block mb-4">
@@ -64,8 +86,9 @@ function NewNote() {
                     />
                 </label>
 
-                <button className="btn-aero w-full py-3 text-lg font-semibold">Salvar Nota</button>
-            </main>
+                <button type="submit" className="btn-aero w-full py-3 text-lg font-semibold"
+                >Salvar Nota</button>
+            </form>
         </div>
     );
 }
