@@ -38,14 +38,16 @@ function Home() {
         {/* {OpenNewNoteModal && <NewNoteModal />} */}
 
         {NotesData?.map((note) => (
-          <div className="glassy-panel outline-2 outline-sky-950/10 hover:outline-sky-200 duration-200 ease-in-out max-w-xl mx-auto mt-0">
-            <h2 className="note-title hover:underline w-fit"><Link to={`/notes/${note._id}`}>{note.title}</Link></h2>
-            <p className="note-brief mt-2">{note.description}</p>
-            <p className="note-content mt-4">
-              {note.content.length > 125
-                ? note.content.slice(0, 125) + " ..."
-                : note.content}
-            </p>
+          <div className="glassy-panel flex flex-col justify-between size-full outline-2 outline-sky-950/10 hover:outline-sky-200 duration-200 ease-in-out max-w-xl mx-auto mt-0">
+            <div>
+              <h2 className="note-title hover:underline w-fit"><Link to={`/notes/${note._id}`}>{note.title}</Link></h2>
+              <p className="note-brief mt-2">{note.description}</p>
+              <p className="note-content mt-4">
+                {note.content.length > 125
+                  ? note.content.slice(0, 125) + " ..."
+                  : note.content}
+              </p>
+            </div>
             <div className="flex justify-between mt-4 items-center">
               <div className="flex gap-x-3">
                 <button
