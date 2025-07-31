@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+body {
+  min-height: 100vh;
+  @apply text-slate-900 font-sans;
+  background-image: url('/public/bg-images/bg-1.jpeg'); 
+  background-size: cover;
+}
+
+.glassy-panel {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+
+}
+
+.btn-aero {
+  @apply px-6 py-2 rounded-full text-white font-semibold  transition-all duration-300;
+  background: linear-gradient(135deg, #70c9ff, #38e2d6);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-aero:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #50b5f7, #2ddbd3);
+}
+
+.note-title {
+  @apply text-2xl md:text-3xl font-bold text-slate-800;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+#CloudNote{
+    @apply text-5xl font-bold text-slate-900;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.note-brief {
+  @apply text-base md:text-lg text-slate-700 italic;
+  opacity: 0.8;
+}
+
+.note-content {
+  @apply text-base text-slate-800 leading-relaxed;
+}
