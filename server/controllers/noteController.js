@@ -29,4 +29,11 @@ const patchNote = async (req, res) => {
     res.status(200).json(note);
 };
 
-export { getNotes, getNoteById, postNote, deleteNote, patchNote };
+const updateNote = async (req, res) => {
+    const { note_id } = req.params;
+    const { body } = req;
+    const note = await Note.findByIdAndUpdate(note_id, body);
+    res.status(200).json(note);
+};
+
+export { getNotes, getNoteById, postNote, deleteNote, patchNote, updateNote };

@@ -1,27 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoReturnUpBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
 import useNotes from "../hooks/useNotes";
+import { useParams } from "react-router-dom";
 
-function NewNote() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [content, setContent] = useState("");
+function EditNote() {
+    const { note_id } = useParams();
+    const { handleUpdateNote } = useNotes()
 
-    const { handleCreateNote } = useNotes()
+    const [title, setTitle] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
+    const [content, setContent] = useState<string>("");
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const note = { title, description, content, _id: note_id };
 
-        if (!title.trim() || !description.trim() || !content.trim()) {
-            toast.error("Preencha os campos");
-            return;
-        };
-
-        const note = { title, description, content }
-        handleCreateNote({ note, setTitle, setDescription, setContent })
+        handleUpdateNote(note);
     };
+
+    useEffect(() => {
+        const fetchNote = async () => {
+            const response = await fetch(`http://localhost:5000/api/notes/${note_id}`);
+            const NoteData = await response.json();
+
+            setTitle(NoteData.title); setDescription(NoteData.description); setContent(NoteData.content);
+        }
+
+        fetchNote();
+    }, []);
 
     return (
         <div className="pb-6 max-w-6xl mx-auto w-[90%] relative">
@@ -33,8 +40,9 @@ function NewNote() {
                 </span>
                 <span>Voltar</span>
             </Link>
+
             <form onSubmit={handleFormSubmit} className="glassy-panel w-[90%] max-w-xl mx-auto outline-2 outline-sky-950/10 duration-200 ease-in-out">
-                <h1 className="note-title mb-4">Nova Nota</h1>
+                <h1 className="note-title mb-4">Update Nota</h1>
 
                 <label className="block mb-4">
                     <p className="text-md text-slate-700 font-semibold flex justify-between">
@@ -80,11 +88,13 @@ function NewNote() {
                     />
                 </label>
 
-                <button type="submit" className="btn-aero w-full py-3 text-lg font-semibold"
-                >Salvar Nota</button>
+                <button
+                    type="submit"
+                    className="btn-aero w-full py-3 text-lg font-semibold"
+                >Editar Nota</button>
             </form>
         </div>
     );
 }
 
-export default NewNote;
+export default EditNote;
