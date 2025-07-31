@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import type { NoteProps } from "../types/NoteProps";
 
-function NotePage() {
+function NoteDetails() {
     const { note_id } = useParams();
     const [Note, setNote] = useState<NoteProps>();
 
@@ -29,4 +29,4 @@ function NotePage() {
     )
 };
 
-export default NotePage;
+export default NoteDetails;
