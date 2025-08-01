@@ -3,8 +3,6 @@ import type { NoteProps } from "../types/NoteProps";
 import { Link } from "react-router-dom";
 import { LuTrash2 } from "react-icons/lu";
 import { FaEdit, FaPlus } from "react-icons/fa";
-import axios from "axios";
-import toast from "react-hot-toast";
 import useNotes from "../hooks/useNotes";
 // import NewNoteModal from "../modals/NewNoteModal";
 
@@ -27,7 +25,7 @@ function Home() {
   return (
     <>
       <main className="max-w-6xl mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 mb-4 relative">
-        <Link to={'/notes/new'} className="flex items-center justify-center min-h-[225px] h-full border-6 border-dashed border-white/50 rounded-2xl text-5xl text-white/60 hover:text-white hover:border-sky-50 transition-all duration-300"
+        <Link to={'/notes/new'} className="flex items-center justify-center min-h-[225px] h-full border-6 border-dashed border-white/50 rounded-2xl text-5xl text-white/60 hover:text-white hover:border-sky-50 transition-all duration-300 cursor-default"
         >
           <FaPlus />
 
@@ -51,7 +49,7 @@ function Home() {
                 <Link
                   to={`/notes/edit/${note._id}`}
                   title="Editar"
-                  className="p-2 rounded-full hover:scale-105 druation-300 ease-in-out hover:bg-sky-100/70 transition-colors hover:text-sky-950 text-xl"
+                  className="p-2 cursor-default rounded-full hover:scale-105 druation-300 ease-in-out hover:bg-sky-100/70 transition-colors hover:text-sky-950 text-xl"
                 >
                   <FaEdit />
 
@@ -59,7 +57,7 @@ function Home() {
                 <button
                   title="Deletar"
                   type="button"
-                  className="p-2 rounded-full hover:scale-105 druation-300 ease-in-out hover:bg-sky-100/70 transition-colors hover:text-red-500 text-xl"
+                  className="p-2 cursor-default rounded-full hover:scale-105 druation-300 ease-in-out hover:bg-sky-100/70 transition-colors hover:text-red-500 text-xl"
                   onClick={() => handleDeleteNote(note._id!)}
                 >
                   <LuTrash2 />
@@ -67,7 +65,7 @@ function Home() {
               </div>
               <Link
                 to={`/notes/${note._id}`}
-                className="btn-aero ">Ver nota
+                className="btn-aero cursor-default">Ver nota
               </Link>
             </div>
 

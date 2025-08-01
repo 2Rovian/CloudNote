@@ -43,7 +43,7 @@ function NewNote() {
                     </p>
                     <input
                         type="text"
-                        className="w-full mt-1 p-3 rounded-lg bg-slate-200/80 text-slate-900 placeholder:text-slate-500 shadow-inner outline-none focus:ring-2 focus:ring-sky-50 ease-in-out duration-300"
+                        className="w-full mt-1 p-3 rounded-lg text-sky-50 placeholder:text-sky-50/80 shadow-inner outline-none ring-2 ring-sky-50/50 focus:ring-sky-50/80 ease-in-out duration-300"
                         placeholder="Digite o título"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -58,7 +58,7 @@ function NewNote() {
                     </p>
                     <input
                         type="text"
-                        className="w-full mt-1 p-3 rounded-lg bg-slate-200/80 text-slate-900 placeholder:text-slate-500 shadow-inner outline-none focus:ring-2 focus:ring-sky-50 ease-in-out duration-300"
+                        className="w-full mt-1 p-3 rounded-lg text-sky-50 placeholder:text-sky-50/80 shadow-inner outline-none ring-2 ring-sky-50/50 focus:ring-sky-50/80 ease-in-out duration-300"
                         placeholder="Resumo da nota"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -72,7 +72,7 @@ function NewNote() {
                         <span className="text-slate-700/70"> {content.length} / 500 </span>
                     </p>
                     <textarea
-                        className="w-full mt-1 p-3 rounded-lg bg-slate-200/80 text-slate-900 placeholder:text-slate-500 shadow-inner outline-none focus:ring-2 focus:ring-sky-50 resize-none h-40 ease-in-out duration-300"
+                        className="w-full mt-1 p-3 rounded-lg text-sky-50 placeholder:text-sky-50/80 ring-2 ring-sky-50/50 focus:ring-sky-50/80 shadow-inner outline-none focus:ring-2 resize-none h-40 ease-in-out duration-300"
                         placeholder="Escreva sua nota aqui..."
                         value={content}
                         onChange={(e) => setContent(e.target.value)}

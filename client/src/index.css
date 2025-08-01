@@ -7,13 +7,25 @@ body {
   background-size: cover;
 }
 
-.glassy-panel {
+/* .glassy-panel {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+
+} */
+
+.glassy-panel {
+  background-color: rgba(255, 255, 255, 0.150);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089);
   padding: 1.5rem;
 
 }
