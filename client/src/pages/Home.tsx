@@ -49,7 +49,7 @@ function Home() {
                 <Link
                   to={`/notes/edit/${note._id}`}
                   title="Editar"
-                  className="p-2 cursor-default rounded-full hover:scale-105 druation-300 ease-in-out hover:bg-sky-100/70 transition-colors hover:text-sky-950 text-xl"
+                  className="p-2 cursor-default hover:ring-2 ring-sky-50/50 focus:ring-sky-50/80 rounded-full hover:scale-105 druation-300 ease-in-out transition-colors hover:text-sky-950 text-xl"
                 >
                   <FaEdit />
 
@@ -57,7 +57,7 @@ function Home() {
                 <button
                   title="Deletar"
                   type="button"
-                  className="p-2 cursor-default rounded-full hover:scale-105 druation-300 ease-in-out hover:bg-sky-100/70 transition-colors hover:text-red-500 text-xl"
+                  className="p-2 cursor-default hover:ring-2 ring-sky-50/50 focus:ring-sky-50/80 rounded-full hover:scale-105 druation-300 ease-in-out transition-colors hover:text-red-500 text-xl"
                   onClick={() => handleDeleteNote(note._id!)}
                 >
                   <LuTrash2 />

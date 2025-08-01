@@ -77,14 +77,14 @@ function EditNote() {
                 <label className="block mb-6">
                     <p className="text-md text-slate-700 font-semibold flex justify-between">
                         <span>Conteúdo</span>
-                        <span className="text-slate-700/70"> {content.length} / 500 </span>
+                        <span className="text-slate-700/70"> {content.length} / 2000 </span>
                     </p>
                     <textarea
                         className="w-full mt-1 p-3 rounded-lg text-sky-50 placeholder:text-sky-50/80 ring-2 ring-sky-50/50 focus:ring-sky-50/80 shadow-inner outline-none focus:ring-2 resize-none h-40 ease-in-out duration-300"
                         placeholder="Escreva sua nota aqui..."
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
-                        maxLength={500}
+                        maxLength={2000}
                     />
                 </label>
 
