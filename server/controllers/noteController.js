@@ -1,4 +1,4 @@
-import Note from "../models/noteSchema.js";
+import { Note } from "../models/noteSchema.js";
 
 const getNotes = async (req, res) => {
     const notes = await Note.find();
@@ -36,4 +36,11 @@ const updateNote = async (req, res) => {
     res.status(200).json(note);
 };
 
-export { getNotes, getNoteById, postNote, deleteNote, patchNote, updateNote };
+export { 
+    getNotes, 
+    getNoteById, 
+    postNote, 
+    deleteNote, 
+    patchNote, 
+    updateNote 
+};
