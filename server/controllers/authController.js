@@ -1,4 +1,6 @@
 import User from "../models/userSchema.js"
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const getUsers = async (req, res) => {
     try {
@@ -11,7 +13,7 @@ const getUsers = async (req, res) => {
     }
 };
 
-const createUser = async (req, res) => {
+const handleRegister = async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
@@ -40,4 +42,29 @@ const createUser = async (req, res) => {
     }
 };
 
-export { createUser, getUsers }
+const handleLogin = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        if(!username || !password ) {
+            return res.json({msg: "Username e senha são necessários"})
+        };
+        
+        const user = await User.findOne({ username });
+        if(!user) {
+            return res.json({ msg: `Usuário [${username}] não existe `})
+        };
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if(!isMatch) {
+            return res.json({ msg: "Credenciais inválidas" })
+        }
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+        res.status(200).json({msg: "Autenticação realizada com sucesso; Token: ", token});
+    } catch (error) {
+        
+    }
+}
+
+export { handleRegister, getUsers, handleLogin }
