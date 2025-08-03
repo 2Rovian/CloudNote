@@ -63,7 +63,7 @@ const handleLogin = async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
         res.status(200).json({msg: "Autenticação realizada com sucesso; Token: ", token});
     } catch (error) {
-        
+        res.status(500).json({ msg: "Erro ao fazer login ", error: err.message });
     }
 }
 

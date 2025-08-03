@@ -7,19 +7,20 @@ import {
     postNote,
     updateNote
 } from "../controllers/noteController.js";
+import { checkToken } from "../controllers/checkToken.js";
 
 const router = Router()
 
-router.get("/api/notes", getNotes);
+router.get("/api/notes/:user_id", checkToken, getNotes);
 
-router.get("/api/notes/:note_id", getNoteById);
+router.get("/api/notes/:note_id", checkToken, getNoteById);
 
-router.post("/api/notes", postNote);
+router.post("/api/notes", checkToken, postNote);
 
-router.delete("/api/notes/:note_id", deleteNote);
+router.delete("/api/notes/:note_id", checkToken, deleteNote);
 
-router.patch("/api/notes/:note_id", patchNote);
+router.patch("/api/notes/:note_id", checkToken, patchNote);
 
-router.put("/api/notes/:note_id", updateNote);
+router.put("/api/notes/:note_id", checkToken, updateNote);
 
 export default router;
