@@ -28,10 +28,15 @@ Aplicativo completo de anotações com **React + TailwindCSS** no front-end e **
 
 ### 🔧 Backend
 
-```bash
+1. Abra o projeto
+```
 cd backend
+```
+2. Instale as dependências
+```
 npm install
+```
+3. Rode o projeto
+```
 npm run dev
-
-O front-end estará disponível em http://localhost:5173
-O back-end estará disponível em: http://localhost:5000
+```
